@@ -1,28 +1,33 @@
-/**
- * Home Page of your Next.js Portfolio!
- * This file exports a React component that gets rendered at the root route ('/').
- * In App Router, any /app/{segment}/page.tsx becomes a routable page.
- * 
- * This is rendered as a React *Server Component* by default.
- * You can fetch data here using async/await if needed (for SSR/SSG).
- * Client-specific logic: Use Client Components instead and import here.
- */
 import Hero from '../components/Hero'
+import About from '../components/About'
+import Projects from '../components/Projects'
+
 export default function HomePage() {
+  const myProjects = [
+    {
+      title: "My Portfolio",
+      description: "This site, built with Next.js, React, and Tailwind.",
+      url: "https://github.com/stranger1221-png/nextjs-portfolio-learning"
+    },
+    {
+      title: "Cool App",
+      description: "A web app that does something amazing.",
+      url: "https://example.com"
+    }
+  ]
+
   return (
     <main className="min-h-screen flex flex-col items-center justify-center">
       <Hero
         heading="Hi, I'm [Your Name]!"
         subheading="I build modern web apps with Next.js, React, and Tailwind CSS."
-        avatarUrl="/avatar.png" // Place an avatar image in your /public directory!
+        avatarUrl="/avatar.png"
       />
-      {/* Any other sections/components can go below */}
+      <About
+        title="About Me"
+        content="Hello! I'm passionate about building modern web apps with Next.js, React, and Tailwind CSS. I enjoy learning, teaching, and solving real-world problems with code."
+      />
+      <Projects projects={myProjects} sectionTitle="My Portfolio Projects" />
     </main>
   )
 }
-/**
- * Why no `export const metadata` here?
- * The layout.tsx already sets global SEO/metadata — you can override on a page-by-page basis if needed!
- *
- * Want to make this a "Client Component"? Just add: 'use client' at the top (not needed here, since we’re not using hooks/state/side effects).
- */
